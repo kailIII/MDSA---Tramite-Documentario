@@ -77,7 +77,7 @@ DATABASES = {
     'default': {
         'NAME': 'Tramite_Documentario',
         'ENGINE': 'sqlserver_ado',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'USER': 'sa',
         'PASSWORD': 'S1st3mas',
     }
