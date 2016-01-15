@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -73,15 +74,26 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': {
-        'NAME': 'Tramite_Documentario',
-        'ENGINE': 'sqlserver_ado',
-        'HOST': '127.0.0.1',
-        'USER': 'sa',
-        'PASSWORD': 'S1st3mas',
-    }
+   'default': {
+       'ENGINE': "sql_server.pyodbc",
+       'HOST': "127.0.0.1",
+       'PORT': '1433',
+       'USER': "sa",
+       'PASSWORD': "S1st3mas",
+       'NAME': "Tramite_Documentario",
+       'OPTIONS': {
+            'host_is_server': True,
+        },
+   }
 }
+
+
+
+# set this to False if you want to turn off pyodbc's connection pooling
+DATABASE_CONNECTION_POOLING = False
 
 
 # Password validation
