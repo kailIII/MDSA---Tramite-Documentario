@@ -37,6 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'documentos_identificaciones',
+    'departamentos',
+    'distritos',
+    'estados_civiles',
+    'grupos_sanguineos',
+    'paises',
+    'provincias',
+    'vias',
+    'zonas',
 
 ]
 
