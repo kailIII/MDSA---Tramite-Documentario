@@ -7,4 +7,4 @@ from django.db import models
 class Pais(models.Model):
 	pais 		= models.CharField(max_length=255, unique=True, help_text="Escribir nombre del país.")
 	imagen 		= models.ImageField(blank=True, upload_to="imagenes")
-	descripcion = models.TextField(blank=True, help_text="Escribe una descripción del pais.")
+	descripcion = models.TextField(blank=True, help_text="Escribe una descripción del pais. (Opcional)")

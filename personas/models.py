@@ -7,6 +7,7 @@ from estados_civiles.models import EstadoCivil
 from grupos_sanguineos.models import GrupoSanguineo
 from distritos.models import Distrito 
 from zonas.models import Zona 
+from vias.models import Via 
 
 
 # Create your models here.
@@ -16,16 +17,17 @@ class Persona(models.Model):
 	apellido_paterno 		 		= models.CharField(max_length=255, help_text="Escribir apellido paterno.")
 	apellido_materno 		 		= models.CharField(max_length=255, help_text="Escribir apellido materno.")
 	nombre 			 		 		= models.CharField(max_length=255, help_text="Escribir nombre(s).")
-	documento_identificacion 		= models.ForeignKey(DocumentoIdentificacion)
-	numero_documento_identificacion = models.CharField(max_length=25, help_text="Escribir número documento identificación")
+	documento_identificacion 		= models.ForeignKey(DocumentoIdentificacion, on_delete=models.CASCADE)
+	numero_documento_identificacion = models.CharField(unique=True, max_length=25, help_text="Escribir número documento identificación")
 	fecha_nacimiento			    = models.DateField(default="01/01/1980")
-	genero 							= models.BooleanField(choices=BOOL_CHOICES)
+	genero 							= models.BooleanField(choices=BOOL_CHOICES, default=1)
 	estado_civil 					= models.ForeignKey(EstadoCivil)
 	grupo_sanguineo 				= models.ForeignKey(GrupoSanguineo)
 	fotografia 						= models.ImageField(blank=True, upload_to="fotografía")
 	observacion_persona 			= models.TextField(blank=True, help_text="Escribir observación de la persona (Opcional).")
 	distrito 						= models.ForeignKey(Distrito)
 	zona							= models.ForeignKey(Zona)
+	via								= models.ForeignKey(Via)
 	nombre_direccion				= models.CharField(blank=True, max_length=255, help_text="Escribir nombre de la dirección.")
 	departamento					= models.CharField(blank=True, max_length=20)
 	piso							= models.CharField(blank=True, max_length=20)

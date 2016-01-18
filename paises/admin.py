@@ -6,4 +6,4 @@ from .models import Pais
 class PaisAdmin(admin.ModelAdmin):
 	pass 
 
-admin.register(Pais, PaisAdmin)
+admin.site.register(Pais, PaisAdmin)
