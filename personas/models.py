@@ -4,25 +4,29 @@ from __future__ import unicode_literals
 from django.db import models
 from documentos_identificaciones.models import DocumentoIdentificacion
 from estados_civiles.models import EstadoCivil
+from grupos_sanguineos.models import GrupoSanguineo
+from distritos.models import Distrito 
+from zonas.models import Zona 
+
 
 # Create your models here.
 class Persona(models.Model):
 
 	BOOL_CHOICES 	 				= ((True, 'Masculino'), (False, "Femenino"))
-	nombre 			 		 		= models.CharField(max_length=255, help_text="Escribir nombre(s).")
 	apellido_paterno 		 		= models.CharField(max_length=255, help_text="Escribir apellido paterno.")
 	apellido_materno 		 		= models.CharField(max_length=255, help_text="Escribir apellido materno.")
+	nombre 			 		 		= models.CharField(max_length=255, help_text="Escribir nombre(s).")
 	documento_identificacion 		= models.ForeignKey(DocumentoIdentificacion)
 	numero_documento_identificacion = models.CharField(max_length=25, help_text="Escribir número documento identificación")
-	fecha_nacimiento			    = models.DateField()
+	fecha_nacimiento			    = models.DateField(default="01/01/1980")
 	genero 							= models.BooleanField(choices=BOOL_CHOICES)
 	estado_civil 					= models.ForeignKey(EstadoCivil)
 	grupo_sanguineo 				= models.ForeignKey(GrupoSanguineo)
 	fotografia 						= models.ImageField(blank=True, upload_to="fotografía")
-	observacion_persona 			= models.TextField(blank=True, help_text="Escribir observación escribir (Opcional).")
+	observacion_persona 			= models.TextField(blank=True, help_text="Escribir observación de la persona (Opcional).")
 	distrito 						= models.ForeignKey(Distrito)
 	zona							= models.ForeignKey(Zona)
-	nombre_direccion				= models.CharField(blank=True, max_length=255, help_text="Escribir dirección.")
+	nombre_direccion				= models.CharField(blank=True, max_length=255, help_text="Escribir nombre de la dirección.")
 	departamento					= models.CharField(blank=True, max_length=20)
 	piso							= models.CharField(blank=True, max_length=20)
 	interior						= models.CharField(blank=True, max_length=20)
@@ -34,7 +38,8 @@ class Persona(models.Model):
 	denominacion					= models.CharField(blank=True, max_length=255, help_text="Escribir denominación (Opcional).")
 	referencia						= models.CharField(blank=True, max_length=255, help_text="Escribir referencia (Opcional).")
 	observacion_direccion			= models.CharField(blank=True, max_length=255, help_text="Escribir observación de la dirección (Opcional).")
-	telefono_personal				= models.PhoneField(blank=True)
-	celular_personal				= models.PhoneField(blank=True)
-	e_mail							= models.EmailField(blank=True)
-	
+	telefono_personal				= models.CharField(blank=True, max_length=20, help_text="Escribir número del teléfono personal (Opcional).")
+	celular_personal				= models.CharField(blank=True, max_length=20, help_text="Escribir número del celular personal (Opcional).")
+	e_mail							= models.EmailField(blank=True, max_length=255, help_text="Escribir E-Mail (Opcional).")
+
+

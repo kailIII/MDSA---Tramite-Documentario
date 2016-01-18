@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'estados_civiles',
     'grupos_sanguineos',
     'paises',
+    'personas',
     'provincias',
     'vias',
     'zonas',
